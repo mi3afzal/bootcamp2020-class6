@@ -1,13 +1,14 @@
-# PIAIC BootCamp2020 - Class 6 - Project 1
-### Expense Tracker App (React) - V1
+# PIAIC BootCamp2020 - Class 6
+### Expense Tracker App (React)
 Experiment different ways to create expense app
 
 V1. use state hock only with single fat component
-V2. use context api only with small nested components
-V3. use reducer with context api with small nested components
+V2. use state hock and props with small component
+V3. use context api only with small nested components
+V4. use reducer with context api with small nested components
 
 
-https://irfan-bootcamp2020-class6-v1.surge.sh/
+https://irfan-bootcamp2020-class6.surge.sh/
 
 Add and remove transactions. <br />
 shows transaction history. <br />
