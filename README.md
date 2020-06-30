@@ -2,10 +2,10 @@
 ### Expense Tracker App (React)
 Experiment different ways to create expense app
 
-V1. use state hock only with single fat component
-V2. use state hock and props with small component
-V3. use context api only with small nested components
-V4. use reducer with context api with small nested components
+V1. use state hock only with single fat component <br />
+V2. use state hock and props with small component <br />
+V3. use context api only with small nested components <br />
+V4. use reducer with context api with small nested components <br />
 
 
 https://irfan-bootcamp2020-class6.surge.sh/
