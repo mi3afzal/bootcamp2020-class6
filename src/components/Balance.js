@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ExpenseContext } from '../expenseContext';
 
-export const Balance = (props) => {
+export const Balance = () => {
+	const expenseData = useContext(ExpenseContext)[0];
 	return (
-		<h3>Your Balance <br /> ${props.balance}</h3>
+		<h3>Your Balance <br /> ${expenseData.balance}</h3>
 	)
 }

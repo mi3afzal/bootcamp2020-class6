@@ -1,13 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { ExpenseContext } from "../expenseContext";
 
-
-export const AddTransaction = (props) => {
+export const AddTransaction = () => {
 	const [newDesc, setDesc] = useState("");
 	const [newAmount, setAmount] = useState(0);
 
+	const [expenseData, setExpenseData] = useContext(ExpenseContext);
+	const handleAddition = (newAmount, newDesc) => {
+        expenseData.transactions.push({
+            amount: Number(newAmount),
+            desc: newDesc
+        });
+        if (Number(newAmount) > 0) expenseData.income = expenseData.income + Number(newAmount);
+        else expenseData.expense = expenseData.expense + Number(newAmount);
+        expenseData.balance = expenseData.balance + Number(newAmount);
+        setExpenseData({...expenseData});
+    }
+
 	const onSubmit = (event) => {
 		event.preventDefault();
-		props.handleAddition(newAmount, newDesc);
+		if (Number(newAmount) === 0) {
+            alert("Please enter correct value");
+            return false;
+        }
+		handleAddition(newAmount, newDesc);
 		setDesc('');
         setAmount('');
 	}

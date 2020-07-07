@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useContext }  from 'react';
+import { ExpenseContext } from "../expenseContext";
 
-export const TransactionList = (props) => {
+export const TransactionList = () => {
+
+	const [expenseData, setExpenseData] = useContext(ExpenseContext);
+	const handleDeletion = (actionIndex) => {
+        expenseData.transactions = expenseData.transactions.filter(
+            (object, index) => {
+                if(index === actionIndex){
+                    if (object.amount > 0) expenseData.income = expenseData.income - object.amount;
+                    else expenseData.expense = expenseData.expense - object.amount;
+                    expenseData.balance = expenseData.balance - object.amount;
+                    return false;
+                }
+                else return true;
+            }
+        );
+        setExpenseData({...expenseData});
+    }
 
 	return (
 		<div>
@@ -8,10 +25,10 @@ export const TransactionList = (props) => {
 			<hr />
 
 			<ul className="transaction-list">
-				{props.transactions.map((transObj, index) => {
+				{expenseData.transactions.map((transObj, index) => {
 					return (
 						<li key={index} className={transObj.amount < 0 ? 'expense-li' : 'income-li'}>
-							<button className='del' onClick={() => props.handleDeletion(index)}>X</button>
+							<button className='del' onClick={() => handleDeletion(index)}>X</button>
 							<div className="transaction">
 								<span>{transObj.desc}</span>
 								<span>${transObj.amount}</span>
